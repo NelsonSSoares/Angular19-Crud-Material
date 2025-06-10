@@ -4,7 +4,7 @@ import { ConsultaComponent } from './consulta/consulta.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'cadastro',
     component: CadastroComponent
   },
   {
