@@ -6,7 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Cliente } from './cliente';
+import { Cliente } from '../models/cliente/cliente';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -25,8 +26,12 @@ import { Cliente } from './cliente';
 export class CadastroComponent {
   cliente: Cliente = Cliente.newCliente();
 
+  constructor(
+    private service: ClienteService
+  ){}
+
   salvar() {
-    console.log('Cliente salvo:', this.cliente);
-    // Aqui você pode adicionar a lógica para salvar o cliente, como enviar para um serviço ou API
+    this.service.salvar(this.cliente);
+
   }
 }
