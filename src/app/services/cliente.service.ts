@@ -8,11 +8,14 @@ export class ClienteService {
 
   static REPO_CLIENTES = '_CLIENTES';
 
+
+
   constructor() { }
 
   salvar(cliente: Cliente): void {
-    // Aqui você pode adicionar a lógica para salvar o cliente, como enviar para um serviço ou API
-    console.log('Cliente salvo:', cliente);
+    const storage = this.obterStorage();
+    storage.push(cliente);
+    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
   }
 
   obterStorage(): Cliente[] {
