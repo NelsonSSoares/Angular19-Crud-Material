@@ -1,1 +1,39 @@
-<p>consulta works!</p>
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="column" fxFlex="1000px">
+    <form #buscaForm="ngForm" class="mt-60">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Consulta de Cliente</mat-card-title>
+          <mat-card-subtitle>Preencha os campos abaixo</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content class="mt-20">
+          <div fxLayout="row">
+            <div fxLayout="column" fxFlex="800px">
+              <mat-form-field class="full-width">
+                <mat-label>Nome: </mat-label>
+                <input type="text" placeholder="Nelson" matInput  required>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-flat-button color="primary" type="submit" >
+            <mat-icon fontIcon="search"></mat-icon>Pesquisar</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </form>
+
+    <!-- Display results if available -->
+<!--     <div *ngIf="clienteEncontrado">
+      <h3>Cliente Encontrado:</h3>
+      <p><strong>Nome:</strong> {{ clienteEncontrado.nome }}</p>
+      <p><strong>Email:</strong> {{ clienteEncontrado.email }}</p>
+      <p><strong>Data de Nascimento:</strong> {{ clienteEncontrado.dataNascimento | date }}</p>
+    </div> -->
+
+  </div>
+
+</div>
