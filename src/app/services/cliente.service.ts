@@ -27,4 +27,8 @@ export class ClienteService {
     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(clientes));
     return clientes;
   }
+
+  pesquisarCliente(nome: string): Cliente[] {
+    return this.obterStorage();
+  }
 }
