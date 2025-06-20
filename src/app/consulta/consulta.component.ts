@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { ClienteService } from '../services/cliente.service';
 import { Cliente } from '../models/cliente/cliente';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-consulta',
@@ -18,7 +19,8 @@ import { Cliente } from '../models/cliente/cliente';
     MatIconModule,
     FormsModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule
 
   ],
   templateUrl: './consulta.component.html',
@@ -26,14 +28,15 @@ import { Cliente } from '../models/cliente/cliente';
 })
 export class ConsultaComponent implements OnInit {
 
-  listaCliente: Cliente[] = [];
+  listaClientes: Cliente[] = [];
+  colunasTable: string[] = ['id', 'nome', 'cpf', 'email', 'cpf' ,'dataNascimento'];
 
   constructor(
     private service:ClienteService
   ){}
 
   ngOnInit(): void {
-    this.listaCliente = this.service.pesquisarCliente('');
+    this.listaClientes = this.service.pesquisarCliente('');
   }
 
 
