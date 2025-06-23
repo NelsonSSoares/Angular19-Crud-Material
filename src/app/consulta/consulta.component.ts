@@ -9,7 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ClienteService } from '../services/cliente.service';
 import { Cliente } from '../models/cliente/cliente';
 import { CommonModule } from '@angular/common';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consulta',
