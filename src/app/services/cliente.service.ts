@@ -30,7 +30,7 @@ export class ClienteService {
 
   pesquisarCliente(nome: string): Cliente[] {
     const clientes = this.obterStorage();
-    if(!nome){
+    if (!nome) {
       return clientes;
     }
     return clientes.filter(cliente =>
@@ -43,4 +43,14 @@ export class ClienteService {
     return clientes.find(cliente => cliente.id === id);
   }
 
+  atualizar(cliente: Cliente): void {
+    const storage = this.obterStorage();
+    storage.forEach(c => {
+      if (c.id === cliente.id) {
+        Object.assign(c, cliente);
+      }
+    }
+    );
+     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
+  }
 }

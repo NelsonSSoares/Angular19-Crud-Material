@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Cliente } from '../models/cliente/cliente';
 import { ClienteService } from '../services/cliente.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { query } from 'express';
 
 @Component({
@@ -30,7 +30,8 @@ export class CadastroComponent implements OnInit {
   atualizando: boolean = false;
   constructor(
     private service: ClienteService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
   ngOnInit(): void {
     this.route.queryParamMap
@@ -48,9 +49,15 @@ export class CadastroComponent implements OnInit {
   };
 
   salvar() {
+    if(!this.atualizando) {
     this.service.salvar(this.cliente);
     this.cliente = Cliente.newCliente();
+    }else{
+      this.service.atualizar(this.cliente);
+      this.router.navigate(['/consulta']);
+    }
   }
+
 
 
 
