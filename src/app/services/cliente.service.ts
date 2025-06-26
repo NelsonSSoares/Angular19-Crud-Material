@@ -43,6 +43,7 @@ export class ClienteService {
     return clientes.find(cliente => cliente.id === id);
   }
 
+
   atualizar(cliente: Cliente): void {
     const storage = this.obterStorage();
     storage.forEach(c => {
@@ -53,4 +54,19 @@ export class ClienteService {
     );
      localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
   }
+
+    deletar(cliente: Cliente): void {
+    const storage = this.obterStorage();
+
+    const novaLista = storage.filter(c => c.id !== cliente.id);
+
+    /* const index = storage.indexOf(cliente);
+    if (index > -1) {
+      storage.splice(index, 1);
+    } */
+
+    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(novaLista));
+
+  }
+
 }

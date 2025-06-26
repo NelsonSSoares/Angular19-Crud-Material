@@ -28,14 +28,16 @@ import { Router } from '@angular/router';
   styleUrl: './consulta.component.scss'
 })
 export class ConsultaComponent implements OnInit {
+
   nomeBusca: string = '';
   listaClientes: Cliente[] = [];
-  colunasTable: string[] = ['id', 'nome', 'cpf', 'email', 'cpf' ,'dataNascimento', 'acoes'];
+  colunasTable: string[] = ['id', 'nome', 'cpf', 'email', 'cpf', 'dataNascimento', 'acoes'];
+
 
   constructor(
-    private service:ClienteService,
+    private service: ClienteService,
     private router: Router
-  ){}
+  ) { }
 
 
   ngOnInit(): void {
@@ -47,8 +49,20 @@ export class ConsultaComponent implements OnInit {
   }
 
   editarCliente(id: string) {
-    this.router.navigate(['/cadastro'], {queryParams: {"id": id }});
+    this.router.navigate(['/cadastro'], { queryParams: { "id": id } });
   }
 
+  preparaDeletar(cliente: Cliente) {
+    cliente.deletado = true;
+  }
+
+  deletarCliente(cliente: Cliente) {
+    this.service.deletar(cliente);
+
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl(currentUrl);
+    });
+  }
 
 }
