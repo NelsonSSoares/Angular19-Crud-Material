@@ -37,6 +37,7 @@ export class ConsultaComponent implements OnInit {
     private router: Router
   ){}
 
+
   ngOnInit(): void {
     this.listaClientes = this.service.pesquisarCliente('');
   }
