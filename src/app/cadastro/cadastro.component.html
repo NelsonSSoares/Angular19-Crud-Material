@@ -19,7 +19,8 @@
             <div class="column" fxFlex="800px">
               <mat-form-field class="full-width">
                 <mat-label>Email: </mat-label>
-                <input type="email" placeholder="josedasilva@gmail.com" matInput name="email" [(ngModel)]="cliente.email" required>
+                <input type="email" placeholder="josedasilva@gmail.com" matInput name="email"
+                [(ngModel)]="cliente.email" required >
               </mat-form-field>
             </div>
           </div>
@@ -27,7 +28,8 @@
             <div class="column" fxFlex="800px">
               <mat-form-field class="full-width">
                 <mat-label>CPF: </mat-label>
-                <input type="text" placeholder="123456789-10" matInput [(ngModel)]="cliente.cpf" name="cpf" required>
+                <input type="text" placeholder="123456789-10" matInput [(ngModel)]="cliente.cpf"
+                 name="cpf" required mask="000.000.000-00">
               </mat-form-field>
             </div>
           </div>
@@ -35,7 +37,8 @@
             <div class="column" fxFlex="800px">
               <mat-form-field class="full-width">
                 <mat-label>Data de Nascimento:</mat-label>
-                <input type="text" placeholder="05/09/1993" matInput name="datanascimento" [(ngModel)]="cliente.dataNascimento" required>
+                <input type="text" placeholder="05/09/1993" matInput name="datanascimento"
+                 [(ngModel)]="cliente.dataNascimento" required mask="00/00/0000">
               </mat-form-field>
             </div>
           </div>
