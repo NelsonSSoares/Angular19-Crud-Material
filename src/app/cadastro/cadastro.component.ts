@@ -10,6 +10,8 @@ import { Cliente } from '../models/cliente/cliente';
 import { ClienteService } from '../services/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { inject } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
@@ -22,6 +24,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     MatIconModule,
     MatButtonModule,
     NgxMaskDirective,
+
   ],
   providers: [
     provideNgxMask()
@@ -30,8 +33,13 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
   styleUrl: './cadastro.component.scss'
 })
 export class CadastroComponent implements OnInit {
+
+
   cliente: Cliente = Cliente.newCliente();
   atualizando: boolean = false;
+  snack: MatSnackBar = inject(MatSnackBar);
+
+
   constructor(
     private service: ClienteService,
     private route: ActivatedRoute,
@@ -56,13 +64,18 @@ export class CadastroComponent implements OnInit {
     if(!this.atualizando) {
     this.service.salvar(this.cliente);
     this.cliente = Cliente.newCliente();
+    this.mostrarMensagem('Cliente cadastrado com sucesso!');
+    this.router.navigate(['/consulta']);
     }else{
       this.service.atualizar(this.cliente);
+      this.mostrarMensagem('Cliente atualizado com sucesso!');
       this.router.navigate(['/consulta']);
     }
   }
 
 
-
+  mostrarMensagem(mensagem: string) {
+    this.snack.open(mensagem, 'Fechar');
+  }
 
 }
